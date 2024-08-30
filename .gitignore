@@ -1,15 +1,24 @@
-/ElectronTeste/nbproject/private/
-/EDaula3/nbproject/private/
-/EDaula3/build/
-/EDaula3/dist/
-/Frame/nbproject/private/
-/Frame/build/
-/Exercicio1Aula5/nbproject/private/
-/Exercicio1Aula5/build/
-/Exercicio2Aula5/nbproject/private/
-/Exercicio2Aula5/build/
-/Exercicio3Aula5/nbproject/private/
-/Exercicio3Aula5/build/
-/Exercicio4Aula5/nbproject/private/
-/HTML5Application/nbproject/private/
-/Exercicio4Aula5/build/
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*

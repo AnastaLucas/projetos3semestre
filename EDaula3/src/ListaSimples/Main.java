@@ -18,8 +18,9 @@ public class Main {
         lista.insere(15, 2);
         lista.imprimir();
         
-        lista.remover(0);
         
+        
+        System.out.println("\n\n");
         lista.imprimir();
     }
 }

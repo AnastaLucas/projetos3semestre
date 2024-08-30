@@ -34,6 +34,6 @@ public class ListaEncadeada {
     
     public void imprimir(){
         int i = 0;
-        nomes.stream().forEach(x -> System.out.printf("[%d] - %s", x));
+        nomes.stream().forEach(x -> System.out.printf("[%d] - %s", i,x));
     }
 }

@@ -15,5 +15,5 @@ public class Aluno extends Pessoa{
     private float notaVestibular;
     private String curso;
     private String dataMatricula;
-    
+
 }

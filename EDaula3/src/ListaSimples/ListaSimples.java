@@ -83,17 +83,31 @@ public class ListaSimples {
     }
     
     public void remover(int pos){
-        No rmv = this.inicio;
-        No antRmv = new No(rmv.getValor());
-        if(tamanho>pos && pos>0 ){
-            for(int i = 0; i<pos;i++){
-               antRmv = rmv;
-               rmv = rmv.getProximo();
-            }
-            antRmv.setProximo(rmv.getProximo());
-            this.tamanho--;
-            
-            
+        
+        if(tamanho>pos && pos>0){
+            removerSelecao(pos);
+        }else if(pos==0){
         }
     }
+    public void removerUltimo(){
+        No rmv = this.inicio;
+        No antRmv;
+        for(int i = 0; i<tamanho;i++){
+            antRmv = rmv;
+            rmv = rmv.getProximo();
+        }
+        System.out.println(rmv.getValor());
+    }
+    private void removerSelecao(int pos){
+        No rmv = this.inicio;
+        No antRmv = new No(rmv.getValor());
+        for(int i = 0; i<pos;i++){
+            antRmv = rmv;
+            rmv = rmv.getProximo();
+        }
+        antRmv.setProximo(rmv.getProximo());
+        this.tamanho--;
+    }
+   
+    
 }
