@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package ListaSimples;
 
-/**
- *
- * @author lucas.amsantos4
- */
 public class ListaSimples {
     
     private No inicio;
@@ -40,7 +33,7 @@ public class ListaSimples {
         this.tamanho++;
     }
     
-    public void insereInicio(double valor){
+    private void insereInicio(double valor){
         No aux = new No(valor);
         aux.setProximo(inicio);
         this.inicio = aux;
@@ -68,8 +61,8 @@ public class ListaSimples {
             proxAnt.setProximo(aux);
             
             this.tamanho++;
-            
-            
+        }else if(pos==0){
+            insereInicio(valor);
         }
         
     }
@@ -81,23 +74,42 @@ public class ListaSimples {
             aux = aux.getProximo();
         }
     }
-    
+    public void remover(){
+        removerUltimo();
+    }
     public void remover(int pos){
         
         if(tamanho>pos && pos>0){
             removerSelecao(pos);
-        }else if(pos==0){
+        }else if(pos == 0){
+            removerPrimeiro();
         }
     }
-    public void removerUltimo(){
+    
+    
+    private void removerUltimo(){
         No rmv = this.inicio;
         No antRmv;
-        for(int i = 0; i<tamanho;i++){
-            antRmv = rmv;
+        for(int i = 1; i<tamanho() - 1;i++){
             rmv = rmv.getProximo();
         }
-        System.out.println(rmv.getValor());
+        
+        antRmv = rmv.getProximo();
+        rmv.setProximo(null);
+        System.gc();
+        this.tamanho--;
+       
     }
+    
+    private void removerPrimeiro(){
+        this.inicio = this.inicio.getProximo();
+        No rmv = this.inicio;
+        for(int i = 1; i<tamanho()-1;i++){
+            rmv = rmv.getProximo();
+        }
+        this.tamanho--;
+    }
+    
     private void removerSelecao(int pos){
         No rmv = this.inicio;
         No antRmv = new No(rmv.getValor());
@@ -106,8 +118,30 @@ public class ListaSimples {
             rmv = rmv.getProximo();
         }
         antRmv.setProximo(rmv.getProximo());
+        rmv = null;
+        System.gc();
         this.tamanho--;
     }
+    
+    
+    
+    // Exercicios propostos
+    
+    public int getIndex(double valor){
+        No aux = this.inicio;
+        int i;   
+        for(i = 0; (aux.getValor()!= valor);i++ ){
+            aux = aux.getProximo();
+        }
+        
+        return i;
+    }
    
+    /*
+    getIndex(valor)
+    getValor(posicao)
+    ordenar()
+    inserirOrdenado()
+    */
     
 }
