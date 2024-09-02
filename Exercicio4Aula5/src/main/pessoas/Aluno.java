@@ -17,36 +17,22 @@ public class Aluno extends Pessoa{
     private String curso;
     private String dataMatricula;
 
-    public void inserirDados(){
-        
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.print("Digite Nome: ");
-        super.setNome(curso);
-        
-        System.out.print("Digite Rg: ");
-        super.setRg(curso);
-        
-        System.out.print("Digite Cpf: ");
-        super.setCpf(curso);
-        
-        System.out.print("Digite Endereco: ");
-        super.setEndereco(curso);
-        
-        System.out.print("Digite Registro Aluno: ");
-        this.registroAluno = sc.nextInt();
 
-        System.out.print("Digite Nota Vestibular: ");        
-        this.notaVestibular = sc.nextFloat();
-        
-        System.out.print("Digite Curso: ");
-        this.curso = sc.next();
-        
-        System.out.print("Digite data Matricula: ");
-        this.dataMatricula = sc.next();
+    public Aluno(int registroAluno, float notaVestibular, String curso, String dataMatricula, String nome, String rg, String cpf, String endereco) {
+        super(nome, rg, cpf, endereco);
+        this.registroAluno = registroAluno;
+        this.notaVestibular = notaVestibular;
+        this.curso = curso;
+        this.dataMatricula = dataMatricula;
     }
     
-    public void retornarDados(){
-        
+    public String retornarDados(){
+        System.out.println("Dados Alunos");
+        String dados = super.retornarDados()
+                + "RA: "+registroAluno+"\n"
+                + "Nota vestibular: "+notaVestibular+"\n"
+                + "Curso: "+curso+"\n"
+                + "Data Matricula: "+dataMatricula+"\n";
+        return dados;
     }
 }
