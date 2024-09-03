@@ -21,9 +21,11 @@ public class Interface {
     private boolean eAluno;
     int x;
     ArrayList<Professor> professores;
+    ArrayList<Aluno> alunos;
     
     public Interface(){
         professores = new ArrayList<>();
+        alunos= new ArrayList<>();
         while(true){
             
             System.out.println("Selecione:"
@@ -57,14 +59,41 @@ public class Interface {
                     }
                     
                     System.out.flush();
-                    System.out.println("Todos os dados preenchidos.\n\n");
+                    System.out.println("\nTodos os dados preenchidos.\n");
                     break;
                 case "A":
+                    System.out.print("Quantos alunos adicionar: ");
+                    x = sc.nextInt();
+                    
+                    if(x>0) {
+                        eAluno = true;
+                        Aluno[] a = new Aluno[x];
+                        for(int i = 0; i < x; i++){
+                            System.out.printf("Aluno %d",i+1);
+                            a[i] = preencherAluno();
+                            System.out.println("\n\n");
+                        }
+                    
+                    }else{ 
+                        eAluno = false;
+                    }
+                    
+                    System.out.flush();
+                    System.out.println("\nTodos os dados preenchidos.\n");
+                    
                     break;
                 case "I":
                     if(eProfessor == true || eAluno == true){
                         for(Professor p : professores){
-                            p.retornarDadosProf();
+                            System.out.println("Dados Professor:");
+                            System.out.println(p.retornarDadosProf());
+                            System.out.println("\t-------------------");
+                        }
+                        
+                        for(Aluno a : alunos){
+                            System.out.println("Dados Aluno::");
+                            System.out.println(a.retornarDadosAlunos());
+                            System.out.println("\t-------------------");
                         }
                     }else{ 
                         System.out.println("Dados ainda nao foram cadastrados");
@@ -72,21 +101,33 @@ public class Interface {
                     break;
                 case "IMP":
                     if(eProfessor == true){
+                        for(Professor p : professores){
+                            System.out.println("Dados Professor:");
+                            System.out.println(p.retornarDadosProf());
+                            System.out.println("\t-------------------");
+                        }
                     }else{ 
                         System.out.println("Dados ainda nao foram cadastrados");
                     }
                     break;
                 case "IMA":
                     if(eAluno == true){
+                        for(Aluno a : alunos){
+                            System.out.println("Dados Aluno:");
+                            System.out.println(a.retornarDadosAlunos());
+                            System.out.println("\t-------------------");
+                        }
                     }else{ 
                         System.out.println("Dados ainda nao foram cadastrados");
                     }
                     break;
                 case "SAIR":
+                    System.out.println("\nEncerrando.\n\n");
+                    System.exit(0);
                     break;
                 default:
                     System.out.flush();
-                    System.out.println("Opçao Invalida.\n\n");
+                    System.out.println("\n\nOpçao Invalida.");
             }
       
         }
@@ -125,7 +166,7 @@ public class Interface {
     }
     
     public Aluno preencherAluno(){
-        System.out.println("Dados do Aluno");
+        System.out.println("\n\t---Dados do Aluno---");
         
         Scanner sc = new Scanner(System.in);
         
@@ -153,8 +194,9 @@ public class Interface {
         System.out.print("Digite Matricula: ");
         String dataMatricula = sc.next();
         
-        sc.close();
+        
         Aluno p = new Aluno(registroAluno, notaVestibular, curso, dataMatricula, nome, rg, cpf, endereco);
+        alunos.add(p);
         return p;  
     }
 }

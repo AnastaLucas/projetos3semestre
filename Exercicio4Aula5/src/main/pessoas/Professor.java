@@ -25,7 +25,6 @@ public class Professor extends Pessoa{
     }
     
     public String retornarDadosProf(){
-        System.out.println("Dados Professor");
         String dados = super.retornarDados()
                 + "Data Admissao: "+dataAdmissao+"\n"
                 + "Matricula: "+matricula+"\n"

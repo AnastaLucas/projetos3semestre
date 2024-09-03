@@ -1,5 +1,5 @@
 
-package ListaSimples;
+package listaSimples;
 
 public class ListaSimples {
     

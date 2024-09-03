@@ -26,8 +26,7 @@ public class Aluno extends Pessoa{
         this.dataMatricula = dataMatricula;
     }
     
-    public String retornarDados(){
-        System.out.println("Dados Alunos");
+    public String retornarDadosAlunos(){
         String dados = super.retornarDados()
                 + "RA: "+registroAluno+"\n"
                 + "Nota vestibular: "+notaVestibular+"\n"
