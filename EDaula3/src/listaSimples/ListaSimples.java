@@ -136,7 +136,26 @@ public class ListaSimples {
         
         return i;
     }
+    
+    public double getValor(int pos){
+        No aux = this.inicio;
+        for(int i = 0; i<pos; i++){
+            aux = aux.getProximo();
+        }
+        return aux.getValor();
+    }
    
+    public void ordenar(){
+        No aux = this.inicio;
+        No xua = this.inicio.getProximo();
+        
+        for(int i = 0; i < tamanho() -1; i++){
+            for(int j = 0; j < tamanho() -(i+1); j++){
+                if(aux.getValor()>)
+            }
+        }
+        
+    }
     /*
     getIndex(valor)
     getValor(posicao)
