@@ -1,5 +1,9 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
-package listaSimples;
+package listasimples;
 
 public class ListaSimples {
     
@@ -145,19 +149,29 @@ public class ListaSimples {
         return aux.getValor();
     }
    
-    public void ordenar(){
-        No atual = this.inicio;
-        No proximo = this.inicio.getProximo();
-        No aux;
+    public void ordenar() {
         
-        for(int i = 0; i < tamanho() -1; i++){
-            for(int j = 0; j < tamanho() -(i+1); j++){
+        boolean ordenado;
+        do{
+            No atual = this.inicio;
+            No proximo = atual.getProximo();
+            ordenado = false;
+            while(proximo!=null){
                 if(atual.getValor()>proximo.getValor()){
-                    
+                    double aux = atual.getValor();
+                    atual.setValor(proximo.getValor());
+                    proximo.setValor(aux);
+                    ordenado = true;
                 }
+                atual = proximo;
+                proximo = atual.getProximo();
             }
-        }
-        
+        }while(ordenado);
+    }
+    
+    public void inserirOrdenado(double valor){
+        insere(valor);
+        ordenar();
     }
     /*
     getIndex(valor)
