@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ListaSimples;
+package listaSimples;
 
 /**
  *
@@ -18,8 +18,9 @@ public class Main {
         lista.insere(15, 2);
         lista.imprimir();
         
-        lista.remover(0);
-        
+        System.out.println("{[][ = "+lista.getIndex(30));
+        System.out.println("getValor = "+lista.getValor(3));
+        System.out.println("\n\n");
         lista.imprimir();
     }
 }

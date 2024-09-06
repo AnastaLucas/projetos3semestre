@@ -4,6 +4,7 @@
  */
 package main.pessoas;
 
+import java.util.Scanner;
 import main.Pessoa;
 
 /**
@@ -15,5 +16,22 @@ public class Aluno extends Pessoa{
     private float notaVestibular;
     private String curso;
     private String dataMatricula;
+
+
+    public Aluno(int registroAluno, float notaVestibular, String curso, String dataMatricula, String nome, String rg, String cpf, String endereco) {
+        super(nome, rg, cpf, endereco);
+        this.registroAluno = registroAluno;
+        this.notaVestibular = notaVestibular;
+        this.curso = curso;
+        this.dataMatricula = dataMatricula;
+    }
     
+    public String retornarDadosAlunos(){
+        String dados = super.retornarDados()
+                + "RA: "+registroAluno+"\n"
+                + "Nota vestibular: "+notaVestibular+"\n"
+                + "Curso: "+curso+"\n"
+                + "Data Matricula: "+dataMatricula+"\n";
+        return dados;
+    }
 }
