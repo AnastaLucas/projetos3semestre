@@ -6,6 +6,7 @@ package main.personagens;
 
 import main.armas.Arma;
 import main.armas.Escudo;
+import main.monstros.Inimigo;
 
 
 /**
@@ -29,7 +30,8 @@ public class Guerreiro {
         this.escudo = escudo;
     }
     
-    public int ataque(){
-        return arma.dano();
+    public void ataque(Inimigo inimigo){
+        inimigo.atqRecebido(arma.dano());
+        
     }
 }

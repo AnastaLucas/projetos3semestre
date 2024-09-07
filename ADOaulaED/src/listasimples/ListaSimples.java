@@ -44,15 +44,7 @@ public class ListaSimples {
         this.tamanho++;
     }
     
-    public void insere(double valor){
-        if(listaVazia()){
-            inserePrimeiro(valor);
-        }else{
-            insereUltimo(valor);
-        }
-    }
-    
-    public void insere(double valor, int pos){
+    private void insereMeio(double valor, int pos){
         No aux = new No(valor);
         No proxAnt = this.inicio;
         
@@ -68,7 +60,17 @@ public class ListaSimples {
         }else if(pos==0){
             insereInicio(valor);
         }
-        
+    }
+    public void insere(double valor){
+        if(listaVazia()){
+            inserePrimeiro(valor);
+        }else{
+            insereUltimo(valor);
+        }
+    }
+    
+    public void insere(double valor, int pos){
+        insereMeio(valor, pos);
     }
     
     public void imprimir(){
@@ -134,19 +136,25 @@ public class ListaSimples {
     public int getIndex(double valor){
         No aux = this.inicio;
         int i;   
-        for(i = 0; (aux.getValor()!= valor);i++ ){
+        for(i = 0; (aux != null);i++ ){
+            
+            if(aux.getValor() == valor){ return i;}
             aux = aux.getProximo();
         }
-        
-        return i;
+        return -1;
     }
     
-    public double getValor(int pos){
+    public void getValorPorPos(int pos){
         No aux = this.inicio;
+        if(tamanho()<=pos){ 
+            System.out.println("Alem do limite");
+            return;
+        }
+        
         for(int i = 0; i<pos; i++){
             aux = aux.getProximo();
         }
-        return aux.getValor();
+        System.out.printf("O valor na posicao %d é %.2f", pos, aux.getValor());
     }
    
     public void ordenar() {
@@ -169,7 +177,7 @@ public class ListaSimples {
         }while(ordenado);
     }
     
-    public void inserirOrdenado(double valor){
+    public void insereOrdenado(double valor){
         insere(valor);
         ordenar();
     }
