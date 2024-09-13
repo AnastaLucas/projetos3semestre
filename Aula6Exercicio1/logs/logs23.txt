@@ -1,0 +1,1 @@
+java.lang.ArithmeticException: Nao e possivel dividir por 0.

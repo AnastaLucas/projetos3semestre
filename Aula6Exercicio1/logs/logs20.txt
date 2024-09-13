@@ -1,0 +1,2 @@
+calculadora.SinalNaoExiste: Sinal nao correspondente.
+Sinal nao correspondente.

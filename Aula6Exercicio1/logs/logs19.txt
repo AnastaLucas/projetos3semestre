@@ -1,0 +1,2 @@
+java.util.InputMismatchException: Valor inserido invalido!
+Valor inserido invalido!
