@@ -49,34 +49,126 @@ public class ListaDuplamenteEncadeada {
     }
     
     private void insereMeio(double valor, int pos){
-        No aux = new No(valor);   
-        if(tamanho()>pos && pos>0 ){
-            pos-=1;
-            if(tamanho()-pos > tamanho()/2){
-                //Do Inicio ao Fim
-                No esquerda = this.inicio;
-                for(int i = 0; i<pos;i++){
-                    esquerda = esquerda.getProximo();
-                }
-                aux.setProximo(esquerda.getProximo());
-                esquerda.getProximo().setAnterior(aux);
-                esquerda.setProximo(aux);
-                aux.setAnterior(esquerda);
-            }else{
-                //Do Fim ao Inicio
-                No direita = new No(valor);
-                for(int i = tamanho();i>pos;i--){
-                    direita = direita.getAnterior();
-                }
-                aux.setProximo(direita.getProximo());
-                direita.getProximo().setAnterior(aux);
-                direita.setProximo(aux);
-                aux.setAnterior(direita);
+        No aux = new No(valor);
+        No auxDois;
+        if(tamanho()-pos > tamanho()/2){
+            //Do Inicio ao Fim
+            auxDois = this.inicio;
+            for(int i = 0; i<pos-1;i++){
+                auxDois = auxDois.getProximo();
             }
-        }else if(pos==0){
-            insereInicio(valor);
+            // 10 - 3 = 7 esq 
+            //10 - 6 = 4 dir
+        }else{
+            //Do Fim ao Inicio
+            auxDois = this.fim;
+            for(int i = tamanho();i>pos;i--){
+                auxDois = auxDois.getAnterior();
+            }
         }
+        aux.setProximo(auxDois.getProximo());
+        auxDois.getProximo().setAnterior(aux);
+        auxDois.setProximo(aux);
+        aux.setAnterior(auxDois);
         
         this.tamanho++;
+    }
+    
+    public void insere(double valor){
+        if(tamanho()==0){
+            inserePrimeiro(valor);
+        }else{
+            insereUltimo(valor);
+        }
+    }
+    public void insere(double valor, int pos){
+        
+        if(tamanho() == 0){
+            inserePrimeiro(valor);
+            return;
+        }
+        if(pos >= tamanho()){
+            insereUltimo(valor);
+        }else if(pos == 0){
+            insereInicio(valor);
+        }else if(pos>0 && pos < tamanho()){
+            insereMeio(valor, pos);
+        }   
+        
+    }
+    
+    private void removerUltimo(){
+        this.fim = this.fim.getAnterior();
+        this.fim.setProximo(null);
+        System.gc();
+        this.tamanho--;
+    }
+    
+    private void removerPrimeiro(){
+       this.inicio = this.inicio.getProximo();
+       this.tamanho--;
+    }
+    private void removerUnico(){
+        this.inicio = null;
+        this.fim = null;
+        System.gc();
+        this.tamanho = 0;
+    }
+    
+    private void removerMeio(int pos){
+        No rmv;
+        if(tamanho()-pos > tamanho()/2){
+            rmv = this.inicio;
+            //Do Inicio ao Fim
+            for(int i = 0; i<pos;i++){
+                rmv = rmv.getProximo();
+            }
+            // 10 - 3 = 7 esq 
+            //10 - 6 = 4 dir
+        }else{
+            rmv = this.fim;
+            //Do Fim ao Inicio
+            for(int i = tamanho();i>pos+1;i--){
+                rmv = rmv.getAnterior();
+            }
+        }
+        rmv.getAnterior().setProximo(rmv.getProximo());
+        rmv.getProximo().setAnterior(rmv.getAnterior());
+        rmv = null;
+        System.gc();
+        this.tamanho--;
+    }
+    
+    public void remover(){
+        if(tamanho()<=1){
+            removerUnico();
+        }else{
+            removerUltimo();
+        }
+    }
+    
+    public void remover(int pos){
+        if(pos == 0){
+            removerPrimeiro();
+        }else if(pos>0 && pos<tamanho()-1){
+            removerMeio(pos);
+        }else{
+            removerUltimo();
+        }
+    }
+    
+    public void imprimir(){
+        No aux = this.inicio;
+        for(int i = 0; i<tamanho();i++){
+                System.out.printf("[%d] - %.2f\n", i, aux.getValor());
+                aux = aux.getProximo();
+            }
+    }
+    public void imprimirInverso(){
+        No aux = this.fim;
+        for(int i = tamanho(); i>0;i--){
+                System.out.printf("[%d] - %.2f\n", i, aux.getValor());
+                aux = aux.getAnterior();
+            }
     }
 }

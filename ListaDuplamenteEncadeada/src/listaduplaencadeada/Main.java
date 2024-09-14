@@ -9,5 +9,19 @@ package listaduplaencadeada;
  * @author lucas.amsantos4
  */
 public class Main {
-    
+    public static void main(String[] args) {
+        ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
+        
+        int x = 100;
+        for(int i = 0; i<x;i++){
+            lista.insere(10*i);
+        }
+        
+        System.out.println("\n|"+lista.tamanho()
+                + "\n-------");
+        lista.remover(97);
+        System.out.println("|"+lista.tamanho()+"\n");
+        
+        lista.imprimir();
+    }
 }
