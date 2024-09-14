@@ -12,11 +12,11 @@ public class Main {
     public static void main(String[] args) {
         ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
         
-        int x = 100;
+        int x = 100000000;
         for(int i = 0; i<x;i++){
             lista.insere(10*i);
         }
-        
+        lista.imprimir();
         System.out.println("\n|"+lista.tamanho()
                 + "\n-------");
         lista.remover(97);

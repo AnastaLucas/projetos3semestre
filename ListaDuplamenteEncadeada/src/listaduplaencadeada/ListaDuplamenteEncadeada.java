@@ -106,6 +106,8 @@ public class ListaDuplamenteEncadeada {
     
     private void removerPrimeiro(){
        this.inicio = this.inicio.getProximo();
+       this.inicio.setAnterior(null);
+       System.gc();
        this.tamanho--;
     }
     private void removerUnico(){
