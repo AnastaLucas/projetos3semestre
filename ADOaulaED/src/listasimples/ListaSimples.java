@@ -102,6 +102,7 @@ public class ListaSimples {
         
         antRmv = rmv.getProximo();
         rmv.setProximo(null);
+        this.fim = rmv;
         System.gc();
         this.tamanho--;
        

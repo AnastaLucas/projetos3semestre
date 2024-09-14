@@ -15,6 +15,7 @@ public class Main {
         
         lista.insere(15);
         lista.insere(5);
+        lista.remover();
         lista.insere(100);
         lista.insere(13, 2);
         lista.imprimir();
