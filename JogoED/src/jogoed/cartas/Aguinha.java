@@ -8,14 +8,13 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Primeape extends Carta{
-    public Primeape(){
+public class Aguinha extends Carta{
+    public Aguinha(){
         super(
-        "Primeape",
-        70,
-        40,
-        "Planta"
+        "Aguinha",
+        6,
+        8,
+        "Agua"
         );
     }
-    
 }

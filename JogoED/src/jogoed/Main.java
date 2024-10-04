@@ -6,187 +6,157 @@ package jogoed;
 
 import java.util.Random;
 import java.util.Scanner;
-import jogoed.cartas.Alakazam;
-import jogoed.cartas.Arbok;
-import jogoed.cartas.Blastoise;
+import jogoed.cartas.Foguinho;
+import jogoed.cartas.Aguinha;
+import jogoed.cartas.Agua;
 import jogoed.cartas.Carta;
-import jogoed.cartas.Charizard;
-import jogoed.cartas.Electabuzz;
-import jogoed.cartas.Ninetales;
-import jogoed.cartas.Primeape;
-import jogoed.cartas.Raticate;
-import jogoed.cartas.Sandslash;
-import jogoed.cartas.Venusaur;
+import jogoed.cartas.Fogo;
+import jogoed.cartas.Aguona;
+import jogoed.cartas.Fogao;
+import jogoed.cartas.Plantinha;
+import jogoed.cartas.Planta;
+import jogoed.cartas.Normal;
+import jogoed.cartas.Plantona;
 
-/**
- *
- * @author lucas.amsantos4
- */
+
+
+
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        int atributo;
-        Carta cartaJg1;
-        Carta cartaJg2;
         Scanner sc = new Scanner(System.in);
         Deck deck = iniciar();
-        
-        
-        deck.imprimir();
-        System.out.println("Jogador 1 escolha as cartas:\n");
-        Deck jogador1 = criaDeck(deck);
-        
-        
-        deck.imprimir();
-        System.out.println("Jogador 2 escolha as cartas:\n");
-        Deck jogador2 = criaDeck(deck);
+        Deck jogador1;
+        System.out.println("Jogador 1, escolha suas cartas:");
+        jogador1 = criaDeck(deck, sc);
+
+        System.out.println("\n\nJogador 2, escolha suas cartas:");
+        Deck jogador2 = criaDeck(deck, sc);
+
         Random random = new Random();
-        
-        int randomN;
-        
-        while(!jogador2.deckVazio() && !jogador1.deckVazio()){
-            randomN = random.nextInt(2)+1;
-            System.out.println("\nJogador "+randomN+" escolhe atributo!");
-            System.out.println("\nEscolha entre [1] - def [2] - atq");
-            atributo = sc.nextInt();
-            
-            jogador1.imprimir();
-            System.out.println("\nJogador 1 escolha a carta");
-            
-            cartaJg1 = jogador1.escolher(sc.nextInt());
-            
-            jogador2.imprimir();
-            
-            System.out.println("\nJogador 2 escolha a carta");
-            
-            cartaJg2 = jogador2.escolher(sc.nextInt());
-            
-            if(atributo == 1){
-                if(combateDef(cartaJg1, cartaJg2)==1){
-                    jogador2.remover(cartaJg2);
-                    System.out.println("Jogador 2 perdeu a carta");
-                }else{
-                    jogador1.remover(cartaJg1);
-                    System.out.println("Jogador 1 perdeu a carta");
-                }
-            }else{
-                
-                if(combateAtq(cartaJg1, cartaJg2)==1){
-                    jogador2.remover(cartaJg2);
-                    System.out.println("Jogador 2 perdeu a carta");
-                }else{
-                    jogador1.remover(cartaJg1);
-                    System.out.println("Jogador 1 perdeu a carta");
-                }
-            }
-        }
-        
-        if(jogador1.deckVazio()){
-            System.out.println("Jogador 1 Perdeu---------------");
-        }else if(jogador2.deckVazio()){
-            System.out.println("Jogador 2 Perdeu---------------");
-        }
-        
-        
-        
-    }
-    
-    public static int combateAtq(Carta pokn1, Carta pokn2){
-        int v1=1, v2=1;
-        int vantagem = vangatem(pokn1, pokn2);
-        if(vantagem!=0){
-            if(vantagem == 1){
-                
-                v1+=1;
-            }else if(vantagem == 2){
-                
-                v2+=1;
-            } 
-        }
-        if(pokn1.getAtq()*v1>pokn2.getAtq()*v2){
-            return 1;
-        }
-        return 2;
-    }
-    
-    public static int combateDef(Carta pokn1, Carta pokn2){
-        int v1=1, v2=1;
-        int vantagem = vangatem(pokn1, pokn2);
-        if(vantagem!=0){
-            if(vantagem == 1){
-                v1+=1;
-            }else if(vantagem == 2){
-                v2+=1;
-            } 
-        }
-        
-        if(pokn1.getDef()*v1>pokn2.getDef()*v2){
-            return 1;
-        }
-        return 2;
-    }
-    
-    public static int vangatem(Carta pokn1, Carta pokn2){
-        String tN1 = pokn1.getTipo(), tN2 = pokn2.getTipo();
-        int v = 0;
-        if(tN1.equals("Normal")){
-            return 0;
-        }
-        if(tN2.equals("Normal")){
-            return 0;
-        }
-        
-        if(!tN1.equals(tN2)){
-            if ((tN1.equalsIgnoreCase("Fogo") && tN2.equalsIgnoreCase("Planta")) ||
-                    (tN1.equalsIgnoreCase("Planta") && tN2.equalsIgnoreCase("Agua")) ||
-                    (tN1.equalsIgnoreCase("Agua") && tN2.equalsIgnoreCase("Fogo"))) {
-                return 1; // Jogador 1 ganha
+        boolean jogador1Escolhe;
+
+        while (!jogador1.deckVazio() && !jogador2.deckVazio()) {
+            jogador1Escolhe = random.nextBoolean();
+            System.out.println("\nJogador " + (jogador1Escolhe ? 1 : 2) + " escolhe o atributo!");
+            int atributo = escolherAtributo(sc);
+
+            Carta cartaJg1 = escolherCarta(jogador1, sc, "Jogador 1");
+            Carta cartaJg2 = escolherCarta(jogador2, sc, "Jogador 2");
+
+            if (atributo == 1) {
+                realizarCombate(cartaJg1, cartaJg2, jogador1, jogador2, true);
             } else {
-                return 2; // Jogador 2 ganha
+                realizarCombate(cartaJg1, cartaJg2, jogador1, jogador2, false);
             }
         }
-        return v;
+
+        if (jogador1.deckVazio()) {
+            System.out.println("Jogador 1 perdeu o jogo!");
+        } else {
+            System.out.println("Jogador 2 perdeu o jogo!");
+        }
     }
-    
-    public static Deck iniciar(){
-       
+
+    private static void realizarCombate(Carta cartaJg1, Carta cartaJg2, Deck jogador1, Deck jogador2, boolean defesa) {
+        int vencedor = defesa ? combateDef(cartaJg1, cartaJg2) : combateAtq(cartaJg1, cartaJg2);
+        if (vencedor == 1) {
+            jogador2.remover(cartaJg2);
+            System.out.println("Jogador 2 perdeu a carta.");
+        } else {
+            jogador1.remover(cartaJg1);
+            System.out.println("Jogador 1 perdeu a carta.");
+        }
+    }
+
+    private static int escolherAtributo(Scanner sc) {
+        int atributo;
+        do {
+            System.out.println("\nEscolha entre [1] - Defesa ou [2] - Ataque:");
+            atributo = sc.nextInt();
+        } while (atributo != 1 && atributo != 2);
+        return atributo;
+    }
+
+    private static Carta escolherCarta(Deck jogador, Scanner sc, String nomeJogador) {
+        jogador.imprimir();
+        int escolha;
+        do {
+            System.out.println("\n" + nomeJogador + ", escolha sua carta (0 a " + (jogador.tamanho() - 1) + "):");
+            escolha = sc.nextInt();
+        } while (escolha < 0 || escolha >= jogador.tamanho());
+        return jogador.escolher(escolha);
+    }
+
+    private static Deck iniciar() {
         Deck todas = new Deck();
+
         
-        todas.insere(new Alakazam());
-        
-        todas.insere(new Arbok());
-        
-        todas.insere(new Blastoise());
-        
-        todas.insere(new Charizard());
-        
-        todas.insere(new Electabuzz());
-        
-        todas.insere(new Ninetales());
-        todas.insere( new Primeape());
-        
-        todas.insere(new Raticate());
-        
-        todas.insere(new Sandslash());
-        
-        todas.insere(new Venusaur());
-        
+        todas.insere(new Aguinha());
+        todas.insere(new Agua());
+        todas.insere(new Aguona());
+        todas.insere(new Foguinho());
+        todas.insere(new Fogo());
+        todas.insere(new Fogao());
+        todas.insere(new Plantinha());
+        todas.insere(new Planta());
+        todas.insere(new Plantona());
+        todas.insere(new Normal());
+
         todas.imprimirStatus();
+        System.out.println("\n");
         return todas;
     }
-    
-    public static Deck criaDeck(Deck deck){
+
+    private static Deck criaDeck(Deck deck, Scanner sc) {
         Deck deckJogador = new Deck();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Escolha suas Cartas");
-        for(int i = 0; i<6; i ++){
-            System.out.println("["+i+"] Escolha a proxima");
-            deckJogador.insere(deck.escolher(sc.nextInt()));
+        deck.imprimir();
+        for (int i = 0; i < 6; i++) {
+            
+            System.out.print("\nEscolha a carta número " + (i + 1) + ": ");
+            int escolha = sc.nextInt();
+            Carta aux = deck.escolher(escolha).copia();
+            deckJogador.insere(aux);
         }
         return deckJogador;
     }
-}
 
+    private static int combateAtq(Carta pokn1, Carta pokn2) {
+        return calcularVencedor(pokn1, pokn2, true);
+    }
+
+    private static int combateDef(Carta pokn1, Carta pokn2) {
+        return calcularVencedor(pokn1, pokn2, false);
+    }
+
+    private static int calcularVencedor(Carta pokn1, Carta pokn2, boolean ataque) {
+        int v1 = 1, v2 = 1;
+        int vantagem = calcularVantagem(pokn1, pokn2);
+        if (vantagem == 1) {
+            v1++;
+        } else if (vantagem == 2) {
+            v2++;
+        }
+
+        int stat1 = ataque ? pokn1.getAtq() * v1 : pokn1.getDef() * v1;
+        int stat2 = ataque ? pokn2.getAtq() * v2 : pokn2.getDef() * v2;
+
+        return stat1 > stat2 ? 1 : 2;
+    }
+
+    private static int calcularVantagem(Carta pokn1, Carta pokn2) {
+        String tipo1 = pokn1.getTipo(), tipo2 = pokn2.getTipo();
+        if (tipo1.equals("Normal") || tipo2.equals("Normal") ||tipo1.equals(tipo2)) {
+            return 0;
+        }
+
+        if (tipo1.equals("Fogo") && tipo2.equals("Planta") || 
+            tipo1.equals("Planta") && tipo2.equals("Agua") || 
+            tipo1.equals("Agua") && tipo2.equals("Fogo")) {
+            return 1;
+        } else {
+            
+            return 2;
+        }
+    }
+}

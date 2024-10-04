@@ -8,13 +8,14 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Venusaur extends Carta{
-    public Venusaur(){
+public class Fogo extends Carta{
+    public Fogo(){
         super(
-        "Venusaur",
-        70,
-        50,
-        "Planta"
+        "Fogo",
+        8,
+        6,
+        "Fogo"
         );
     }
+    
 }

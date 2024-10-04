@@ -8,13 +8,13 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Sandslash extends Carta{
-    public Sandslash(){
+public class Plantinha extends Carta{
+    public Plantinha(){
         super(
-        "Sandslash",
-        80,
-        20,
-        "Normal"
+        "Plantinha",
+        7,
+        7,
+        "Planta"
         );
     }
     

@@ -8,14 +8,13 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Charizard extends Carta{
-    public Charizard(){
+public class Foguinho extends Carta{
+    public Foguinho(){
         super(
-        "Charizard",
-        70,
-        30,
+        "Foguinho",
+        7,
+        7,
         "Fogo"
         );
     }
-    
 }

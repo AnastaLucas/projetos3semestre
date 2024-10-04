@@ -8,13 +8,13 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Ninetales extends Carta{
-    public Ninetales(){
+public class Normal extends Carta{
+    public Normal(){
         super(
-        "Ninetales",
-        60,
-        20,
-        "Fogo"
+        "Normal",
+        7,
+        7,
+        "Normal"
         );
     }
     

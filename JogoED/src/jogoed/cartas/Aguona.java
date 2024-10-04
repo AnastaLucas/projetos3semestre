@@ -8,13 +8,16 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Blastoise extends Carta{
-    public Blastoise(){
+public class Aguona extends Carta{
+
+    public Aguona() {
         super(
-        "Blastoise",
-        70,
-        60,
+        "Aguona",
+        5,
+        9,
         "Agua"
         );
     }
+    
+    
 }

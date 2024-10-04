@@ -8,16 +8,13 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Electabuzz extends Carta{
-
-    public Electabuzz() {
+public class Agua extends Carta{
+    public Agua(){
         super(
-        "ElectaBuzz",
-        60,
-        20,
+        "Agua",
+        7,
+        8,
         "Agua"
         );
     }
-    
-    
 }

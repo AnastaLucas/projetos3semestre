@@ -8,13 +8,13 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Arbok extends Carta{
-    public Arbok(){
+public class Planta extends Carta{
+    public Planta(){
         super(
-        "Arbok",
-        60,
-        40,
-        "Agua"
+        "Planta",
+        6,
+        8,
+        "Planta"
         );
     }
 }

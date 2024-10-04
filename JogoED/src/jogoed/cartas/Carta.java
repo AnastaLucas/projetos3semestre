@@ -31,8 +31,7 @@ public class Carta {
         this.proximo = null;
     }
     
-    private Carta pokemon;
-    private Carta proximo;
+    
 
     public String getNome() {
         return nome;
@@ -66,6 +65,9 @@ public class Carta {
         this.tipo = tipo;
     }
     
+    private Carta pokemon;
+    private Carta proximo;
+    
     private String nome;
     private int atq;
     private int def;
@@ -81,10 +83,14 @@ public class Carta {
     }    
     
     public void status(){
-        String status = ""+nome+" Tipo:"+tipo+"\n"
-                + "atq - "+atq+"   def - "+def+"\n\n";
+        String status = ""+nome+" Tipo:"+tipo+" "
+                + "atq - "+atq+"   def - "+def+"\n";
         System.out.println(status); 
     }
-    
+    //Novo metodo feito para retornar valores das cartas
+    public Carta copia() {
+        return new Carta(this.nome, this.atq, this.def, this.tipo);  // Cria uma nova carta com os mesmos atributos
+    }
+
     
 }

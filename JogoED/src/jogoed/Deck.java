@@ -109,7 +109,8 @@ public class Deck {
     public void imprimir(){
         Carta aux = this.inicio;
         for(int i = 0; i<tamanho(); i++){
-            System.out.printf("\n[%d] - %s ",i, aux.getNome());
+            //Alterado forma que 
+            System.out.printf("\n[%d] - %s : atq %d - def %d",i, aux.getNome(),aux.getAtq(), aux.getDef());
             aux = aux.getProximo();
         }
     }

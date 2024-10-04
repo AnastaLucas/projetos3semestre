@@ -8,13 +8,14 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Alakazam extends Carta{
-    public Alakazam(){
+public class Fogao extends Carta{
+    public Fogao(){
         super(
-        "Alakazam",
-        70,
-        30,
+        "Fogao",
+        9,
+        5,
         "Fogo"
         );
     }
+    
 }

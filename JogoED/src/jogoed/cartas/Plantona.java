@@ -8,12 +8,12 @@ package jogoed.cartas;
  *
  * @author lucas.amsantos4
  */
-public class Raticate extends Carta{
-    public Raticate(){
+public class Plantona extends Carta{
+    public Plantona(){
         super(
-        "Raticate",
-        50,
-        50,
+        "Plantona",
+        5,
+        9,
         "Planta"
         );
     }
