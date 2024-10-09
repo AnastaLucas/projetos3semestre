@@ -61,7 +61,7 @@ public class ArvoreBinaria {
 			if (aux.getEsquerda() == null){
 			    return aux.getDireita();
 			}else if(aux.getDireita() == null) {
-				return aux.getEsquerda();
+			    return aux.getEsquerda();
 			}
 
 		}
